@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Random Number</title>
+</head>
+<body>
+
+ <input type="number" id="inp" placeholder="How many...." max="10"/> <br/>
+ <button id="btn">Print</button>
+ <button id="jisan">copy first</button>
+ <button id="clr">clear</button>
+ <div id="out"></div>
+  
+ <script>
+ 
+ let btn = document.querySelector("#btn");
+ 
+ btn.onclick = function(){
+ 
+ let inp = Number(document.querySelector("#inp").value);
+ let out = document.querySelector("#out");
+ 
+ let opr = ["016","018","019","014","017","013","015"];
+ let numbers = "";
+ 
+ if(inp == 0){
+ 
+ alert("Please enter how many numbers you want");
+ 
+ }
+ 
+ for(let i = 1;i <= inp;i++){
+ 
+   numbers += opr[Math.floor(Math.random()*opr.length)];
+ 
+   for(let a = 1;a <= 8;a++){
+   
+     numbers += Math.round(Math.random()*9)
+   
+   }
+   
+   numbers += "<br/>";
+ 
+ };
+ 
+ if(inp != 0){
+ 
+ out.innerHTML = numbers;
+ 
+ }
+ 
+ };
+ 
+ jisan.onclick = function(){
+ 
+ navigator.clipboard.writeText(out.innerHTML.substring(0,11));
+ 
+ if(out.innerHTML != ""){
+ 
+ alert(out.innerHTML.substring(0,11)+" is copied");
+ 
+ }else{
+ 
+ alert("Nothing to copy");
+ 
+ }
+ 
+ out.innerHTML = out.innerHTML.slice(15);
+ 
+ }
+ 
+ clr.onclick = function(){
+ 
+ document.querySelector("#inp").value = "";
+ out.innerHTML = "";
+ alert("Cleared");
+ 
+ }
+ 
+ </script> 
+  
+</body>
+</html>
